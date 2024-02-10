@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="css/style.css" rel="stylesheet" />
     <title>My-project</title>
 </head>
@@ -11,19 +12,39 @@
 
         <!-- navbar -->
         <header>
-            <div class="navbar-logo">
-                <img src="assets/logonew.svg" alt="Logo">
-            </div>
-            <ul>
+          <div class="navbar-logo">
+              <img src="assets/logonew.svg" alt="Logo">
+          </div>
+          <div class="hamburger-menu">
+              <div class="bar"></div>
+              <div class="bar"></div>
+              <div class="bar"></div>
+          </div>
+          <ul class="desktop-nav">
               <li><a href="#Home">Home</a></li>
               <li><a href="#Events">Events</a></li>
               <li><a href="#Gallery">Gallery</a></li>
               <li><a href="#Members">Members</a></li>
               <li><a href="#Contact">Contact</a></li>
               <li><a href="#Login">Login</a></li>
-            </ul>
-        </header>
-      <div id="Home" />
+          </ul>
+      </header>
+      
+      <!-- Update the HTML to include the nav-popup element -->
+<div class="nav-popup">
+  <ul>
+      <li><a href="#Home">Home</a></li>
+      <li><a href="#Events">Events</a></li>
+      <li><a href="#Gallery">Gallery</a></li>
+      <li><a href="#Members">Members</a></li>
+      <li><a href="#Contact">Contact</a></li>
+      <li><a href="#Login">Login</a></li>
+  </ul>
+</div>
+
+      
+      
+      <div id="Home">
         <!-- navbar end -->
 
         <!-- banner image -->
@@ -95,10 +116,10 @@
         </div>
           
         <!-- Gallery section end -->
-        <center><div class="divider"></div></center>
+        <center><div class="divider" id="Members"></div></center>
 
 
-        <div class="members-heading"><h1><center>Executive Members</center></h1></div>
+        <div class="exe-members-heading"><h1><center>Executive Members</center></h1></div>
 
        <!-- Members section -->
 
@@ -131,7 +152,7 @@
 
     <!-- all members -->
 
-    <div class="members-heading" id="Members"><h1><center>All Members</center></h1></div>
+    <div class="members-heading"><h1><center>All Members</center></h1></div>
 
 
     <div class="members-section">
@@ -162,11 +183,11 @@
   </div>
     
        <!-- Members section end-->
-
+       <div class="members-heading" id="Contact"><h1><center>Contact Us</center></h1></div>
         <!-- Contact section -->
-        <section id="Contact">
+        <section>
           <div class="contact-container">
-              <h1 class="members-heading">Contact Us</h1>
+              
               <form action="#" method="post">
                   <div class="form-control">
                       <input type="text" name="name" id="name" placeholder="Your Name">
@@ -188,29 +209,34 @@
 
     </div>
     <script type="text/javascript">
-        window.addEventListener("scroll", function(){
-            var header = document.querySelector("header");
-            header.classList.toggle("sticky", window.scrollY > 0);
-        })
-
-
-
-        // Function to handle smooth scrolling to target section
-    function smoothScrollTo(target) {
-        target.scrollIntoView({ behavior: 'smooth' });
-    }
-
-    document.addEventListener('DOMContentLoaded', function() {
-        const navbarLinks = document.querySelectorAll('header ul li a');
-        navbarLinks.forEach(function(link) {
-            link.addEventListener('click', function(event) {
-                event.preventDefault();
-                const targetId = link.getAttribute('href').substring(1); 
-                const targetSection = document.getElementById(targetId);
-                smoothScrollTo(targetSection);
-            });
-        });
-    });
-     </script>
+      window.addEventListener("scroll", function(){
+          var header = document.querySelector("header");
+          header.classList.toggle("sticky", window.scrollY > 0);
+      });
+  
+      // Function to handle smooth scrolling to target section
+      function smoothScrollTo(target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+      }
+  
+      document.addEventListener('DOMContentLoaded', function() {
+          const navbarLinks = document.querySelectorAll('header ul li a');
+          navbarLinks.forEach(function(link) {
+              link.addEventListener('click', function(event) {
+                  event.preventDefault();
+                  const targetId = link.getAttribute('href').substring(1); 
+                  const targetSection = document.getElementById(targetId);
+                  smoothScrollTo(targetSection);
+              });
+          });
+  
+          const hamburgerMenu = document.querySelector('.hamburger-menu');
+          const navPopup = document.querySelector('.nav-popup');
+  
+          hamburgerMenu.addEventListener('click', function() {
+              navPopup.classList.toggle('show-popup');
+          });
+      });
+  </script>
 </body>
 </html>
